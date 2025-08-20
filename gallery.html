@@ -3,121 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Virpi Annanolli | Galleria</title>
-  <link rel="icon" type="image/x-icon" href="android-chrome-512x512.png">
+  <title>Virpi Annanolli | Taidegalleria</title>
+
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
 
   <style>
-    main {
-      margin-top: 100px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    /* --- Newest paintings row --- */
-    .latest-row {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding: 1rem;
-      scroll-snap-type: x mandatory;
-    }
-    .latest-row::-webkit-scrollbar {
-      display: none;
-    }
-    .latest-card {
-      flex: 0 0 auto;
-      width: 280px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #000;
-      scroll-snap-align: start;
-    }
-    .latest-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* --- Cylinder gallery --- */
+    /* Cylinder Gallery */
     .gallery-circle {
-      perspective: 1400px;
-      height: 70vh;
+      perspective: 1200px;
+      height: 400px;
       overflow: hidden;
       position: relative;
-      margin-top: 80px;
+      margin-top: 60px;
     }
+
+    .circle-label {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
     .circle-container {
-      width: 100%;
       height: 100%;
       transform-style: preserve-3d;
       transition: transform 0.8s ease;
-      position: relative;
     }
+
     .gallery-row {
       position: absolute;
       top: 50%;
       left: 50%;
       transform-style: preserve-3d;
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
       justify-content: center;
-      align-items: center;
       transform-origin: center center;
     }
-    .row-label {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -3.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: rgba(255,255,255,0.85);
-      padding: 0.3rem 1rem;
-      border-radius: 10px;
-      white-space: nowrap;
-    }
-    .art-card img {
-      width: 220px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      transition: transform 0.3s, box-shadow 0.3s;
-      background: white;
-    }
-    .art-card img:hover {
-      transform: scale(1.06);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-    }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 200;
-      padding-top: 60px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.88);
-    }
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-    }
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
+    .gallery-row img {
+      width: 180px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -143,104 +75,116 @@
   </header>
 
   <main>
-    <h2>Uusimmat teokset</h2>
-    <div class="latest-row">
-      <div class="latest-card"><img src="IMG-20250819-WA0015.jpg" alt="Uusi teos"></div>
-      <div class="latest-card"><img src="IMG-20250819-WA0016.jpg" alt="Uusi teos"></div>
-      <div class="latest-card"><img src="IMG-20250819-WA0017.jpg" alt="Uusi teos"></div>
-      <div class="latest-card"><img src="IMG-20250819-WA0018.jpg" alt="Uusi teos"></div>
-    </div>
+    <h2 class="fade-in" data-key="gallery">Galleria</h2>
 
-    <h2>Galleria</h2>
-    <div class="gallery-circle">
-      <div class="circle-container">
-
-        <!-- Akvarelli -->
-        <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0005.jpg" alt="Akvarelli"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0006.jpg" alt="Akvarelli"></div>
-          <span class="row-label">Akvarelli</span>
+    <!-- Scrollable row (unchanged for JS recognition) -->
+    <section class="gallery-section fade-in">
+      <h3 class="gallery-title" data-key="section1">Uusimmat teokset</h3>
+      <div class="gallery-carousel" data-speed="2200">
+        <div class="track">
+          <div class="placeholder">
+            <img src="assets/IMG-20250817-WA0000.jpg" alt="Teos – vaaleat sävyt">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Akryyli kankaalle · 70 × 90 cm</p>
+            </div>
+          </div>
+          <div class="placeholder">
+            <img src="assets/IMG-20250817-WA0004.jpg" alt="Teos – kukka-aihe">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Öljy kankaalle · 60 × 80 cm</p>
+            </div>
+          </div>
+          <div class="placeholder">
+            <img src="assets/IMG-20250817-WA0002.jpg" alt="Teos – luonnon hehku">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Akryyli kankaalle · 50 × 70 cm</p>
+            </div>
+          </div>
+          <div class="placeholder">
+            <img src="assets/IMG-20250817-WA0003.jpg" alt="Teos – ekspressiivinen maalaus">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Sekatekniikka · 80 × 100 cm</p>
+            </div>
+          </div>
         </div>
-
-        <!-- Öljyväri -->
-        <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0007.jpg" alt="Öljyväri"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0008.jpg" alt="Öljyväri"></div>
-          <span class="row-label">Öljyväri</span>
-        </div>
-
-        <!-- Sekatekniikka -->
-        <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0009.jpg" alt="Sekatekniikka"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0010.jpg" alt="Sekatekniikka"></div>
-          <span class="row-label">Sekatekniikka</span>
-        </div>
-
-        <!-- Grafiikka -->
-        <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0011.jpg" alt="Grafiikka"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0012.jpg" alt="Grafiikka"></div>
-          <span class="row-label">Grafiikka</span>
-        </div>
-
-        <!-- Digitaaliset työt -->
-        <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0013.jpg" alt="Digitaaliset työt"></div>
-          <div class="art-card"><img src="placeholder.jpg" alt="Digitaalinen"></div>
-          <span class="row-label">Digitaaliset työt</span>
-        </div>
-
       </div>
-    </div>
+    </section>
+
+    <!-- Cylinder galleries -->
+    <section class="gallery-section fade-in">
+      <h3 class="gallery-title">Teokset tyylin mukaan</h3>
+
+      <div class="circle-label">Akryyli</div>
+      <div class="gallery-circle">
+        <div class="circle-container">
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0000.jpg" alt="Akryyli"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0002.jpg" alt="Akryyli"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Akryyli"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0001.jpg" alt="Akryyli"></div>
+        </div>
+      </div>
+
+      <div class="circle-label">Öljy</div>
+      <div class="gallery-circle">
+        <div class="circle-container">
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Öljy"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Öljy"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Öljy"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Öljy"></div>
+        </div>
+      </div>
+
+      <div class="circle-label">Sekatekniikka</div>
+      <div class="gallery-circle">
+        <div class="circle-container">
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0003.jpg" alt="Sekatekniikka"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Sekatekniikka"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Sekatekniikka"></div>
+          <div class="gallery-row"><img src="assets/IMG-20250817-WA0004.jpg" alt="Sekatekniikka"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Modal -->
+  <!-- Modal (unchanged) -->
   <div id="imageModal" class="modal" aria-hidden="true">
-    <span class="close">&times;</span>
-    <div class="modal-content">
+    <span class="close" aria-label="Sulje">&times;</span>
+    <div class="modal-content" role="dialog" aria-modal="true">
       <img id="modalImg" src="" alt="">
+      <div class="modal-text">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDetails"></p>
+      </div>
     </div>
   </div>
 
   <script>
-    const container = document.querySelector(".circle-container");
-    const rows = document.querySelectorAll(".circle-container .gallery-row");
-    const total = rows.length;
-    const angle = 360 / total;
-    const radius = 500;
+    // Cylinder logic
+    document.querySelectorAll(".circle-container").forEach(container => {
+      const rows = container.querySelectorAll(".gallery-row");
+      const total = rows.length;
+      const angle = 360 / total;
+      const radius = 300;
 
-    rows.forEach((row, i) => {
-      const rotation = angle * i;
-      row.style.transform = `rotateX(${rotation}deg) translateZ(${radius}px)`;
-    });
+      rows.forEach((row, i) => {
+        row.style.transform = `rotateX(${angle * i}deg) translateZ(${radius}px)`;
+      });
 
-    let currentIndex = 0;
-    function rotateWheel(direction) {
-      currentIndex = (currentIndex + direction + total) % total;
-      container.style.transform = `rotateX(${-currentIndex * angle}deg)`;
-    }
+      let currentIndex = 0;
+      let lastScroll = 0;
 
-    let lastScroll = 0;
-    document.addEventListener("wheel", (e) => {
-      if (Date.now() - lastScroll < 600) return;
-      if (e.deltaY > 0) rotateWheel(1);
-      else rotateWheel(-1);
-      lastScroll = Date.now();
-    }, { passive: true });
-
-    // Modal
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.querySelector(".close");
-
-    document.querySelectorAll(".art-card img, .latest-card img").forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = img.src;
+      container.parentElement.addEventListener("wheel", e => {
+        if (Date.now() - lastScroll < 600) return;
+        if (e.deltaY > 0) currentIndex++;
+        else currentIndex--;
+        container.style.transform = `rotateX(${-currentIndex * angle}deg)`;
+        lastScroll = Date.now();
       });
     });
-    closeBtn.onclick = () => modal.style.display = "none";
-    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
   </script>
 </body>
 </html>
