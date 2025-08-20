@@ -13,7 +13,7 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: #f8f8f8;
+      background: linear-gradient(to bottom, #fafafa, #f0f0f8);
       color: #222;
     }
 
@@ -23,7 +23,7 @@
       justify-content: space-between;
       padding: 1rem 2rem;
       background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -31,7 +31,8 @@
 
     header h1.logo {
       font-family: "MonteCarlo", cursive;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      color: #444;
     }
 
     nav a {
@@ -39,21 +40,30 @@
       text-decoration: none;
       font-weight: 600;
       color: #333;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #7a4eff;
     }
 
     main {
       padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
 
     h2 {
       text-align: center;
       margin-bottom: 2rem;
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      color: #333;
     }
 
     /* --- 3D cylinder gallery --- */
     .gallery-circle {
-      perspective: 1200px;
-      height: 80vh;
+      perspective: 1400px;
+      height: 75vh;
       overflow: hidden;
       position: relative;
     }
@@ -72,24 +82,41 @@
       left: 50%;
       transform-style: preserve-3d;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
       transform-origin: center center;
     }
 
-    .gallery-row .art-card img {
-      width: 220px;
-      height: auto;
+    .row-label {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -3.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.85);
+      padding: 0.4rem 1rem;
       border-radius: 12px;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-      background: white;
-    }
-    .gallery-row .art-card img:hover {
-      transform: scale(1.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      white-space: nowrap;
     }
 
-    /* Modal (kept from old gallery) */
+    .art-card img {
+      width: 240px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background: white;
+    }
+    .art-card img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -100,7 +127,7 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.88);
     }
 
     .modal-content {
@@ -146,34 +173,39 @@
     <div class="gallery-circle">
       <div class="circle-container">
 
-        <!-- Row 1 -->
+        <!-- Akvarelli -->
         <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0005.jpg" alt="Teos"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0006.jpg" alt="Teos"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0005.jpg" alt="Akvarelli"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0006.jpg" alt="Akvarelli"></div>
+          <span class="row-label">Akvarelli</span>
         </div>
 
-        <!-- Row 2 -->
+        <!-- Öljyväri -->
         <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0007.jpg" alt="Teos"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0008.jpg" alt="Teos"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0007.jpg" alt="Öljyväri"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0008.jpg" alt="Öljyväri"></div>
+          <span class="row-label">Öljyväri</span>
         </div>
 
-        <!-- Row 3 -->
+        <!-- Sekatekniikka -->
         <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0009.jpg" alt="Teos"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0010.jpg" alt="Teos"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0009.jpg" alt="Sekatekniikka"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0010.jpg" alt="Sekatekniikka"></div>
+          <span class="row-label">Sekatekniikka</span>
         </div>
 
-        <!-- Row 4 -->
+        <!-- Grafiikka -->
         <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0011.jpg" alt="Teos"></div>
-          <div class="art-card"><img src="IMG-20250819-WA0012.jpg" alt="Teos"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0011.jpg" alt="Grafiikka"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0012.jpg" alt="Grafiikka"></div>
+          <span class="row-label">Grafiikka</span>
         </div>
 
-        <!-- Row 5 -->
+        <!-- Digitaaliset työt -->
         <div class="gallery-row">
-          <div class="art-card"><img src="IMG-20250819-WA0013.jpg" alt="Teos"></div>
-          <div class="art-card"><img src="placeholder.jpg" alt="Placeholder"></div>
+          <div class="art-card"><img src="IMG-20250819-WA0013.jpg" alt="Digitaaliset työt"></div>
+          <div class="art-card"><img src="placeholder.jpg" alt="Digitaalinen"></div>
+          <span class="row-label">Digitaaliset työt</span>
         </div>
 
       </div>
@@ -192,9 +224,9 @@
     const rows = document.querySelectorAll(".circle-container .gallery-row");
     const total = rows.length;
     const angle = 360 / total;
-    const radius = 450; // distance from center
+    const radius = 520; // distance from center
 
-    // position rows around a circle
+    // Position rows around a circle
     rows.forEach((row, i) => {
       const rotation = angle * i;
       row.style.transform = `rotateX(${rotation}deg) translateZ(${radius}px)`;
