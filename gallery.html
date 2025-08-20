@@ -3,71 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Virpi Annanolli | Taidegalleria</title>
+  <title>Virpi Annanolli | Galleria</title>
   <link rel="icon" type="image/x-icon" href="android-chrome-512x512.png">
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(to bottom, #fafafa, #f0f0f8);
-      color: #222;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    header h1.logo {
-      font-family: "MonteCarlo", cursive;
-      font-size: 2rem;
-      color: #444;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: #333;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #7a4eff;
-    }
-
     main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
+      margin-top: 100px;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 2rem;
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      color: #333;
+      margin-bottom: 20px;
     }
 
-    /* --- 3D cylinder gallery --- */
+    /* --- Newest paintings row --- */
+    .latest-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem;
+      scroll-snap-type: x mandatory;
+    }
+    .latest-row::-webkit-scrollbar {
+      display: none;
+    }
+    .latest-card {
+      flex: 0 0 auto;
+      width: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      scroll-snap-align: start;
+    }
+    .latest-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* --- Cylinder gallery --- */
     .gallery-circle {
       perspective: 1400px;
-      height: 75vh;
+      height: 70vh;
       overflow: hidden;
       position: relative;
+      margin-top: 80px;
     }
-
     .circle-container {
       width: 100%;
       height: 100%;
@@ -75,7 +59,6 @@
       transition: transform 0.8s ease;
       position: relative;
     }
-
     .gallery-row {
       position: absolute;
       top: 50%;
@@ -85,29 +68,24 @@
       gap: 1.5rem;
       justify-content: center;
       align-items: center;
-      flex-wrap: nowrap;
       transform-origin: center center;
     }
-
     .row-label {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: -3.5rem;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       background: rgba(255,255,255,0.85);
-      padding: 0.4rem 1rem;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      padding: 0.3rem 1rem;
+      border-radius: 10px;
       white-space: nowrap;
     }
-
     .art-card img {
-      width: 240px;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       transition: transform 0.3s, box-shadow 0.3s;
       background: white;
     }
@@ -126,16 +104,13 @@
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
       background: rgba(0,0,0,0.88);
     }
-
     .modal-content {
       margin: auto;
       display: block;
       max-width: 90%;
     }
-
     .close {
       position: absolute;
       top: 20px;
@@ -153,7 +128,7 @@
       class="instagram-btn"
       target="_blank"
       aria-label="Instagram">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <rect x="2" y="2" width="20" height="20" rx="5"/>
         <circle cx="12" cy="12" r="5"/>
         <circle class="dot" cx="17.5" cy="6.5" r="1.5"/>
@@ -168,8 +143,15 @@
   </header>
 
   <main>
-    <h2>Galleria</h2>
+    <h2>Uusimmat teokset</h2>
+    <div class="latest-row">
+      <div class="latest-card"><img src="IMG-20250819-WA0015.jpg" alt="Uusi teos"></div>
+      <div class="latest-card"><img src="IMG-20250819-WA0016.jpg" alt="Uusi teos"></div>
+      <div class="latest-card"><img src="IMG-20250819-WA0017.jpg" alt="Uusi teos"></div>
+      <div class="latest-card"><img src="IMG-20250819-WA0018.jpg" alt="Uusi teos"></div>
+    </div>
 
+    <h2>Galleria</h2>
     <div class="gallery-circle">
       <div class="circle-container">
 
@@ -212,6 +194,7 @@
     </div>
   </main>
 
+  <!-- Modal -->
   <div id="imageModal" class="modal" aria-hidden="true">
     <span class="close">&times;</span>
     <div class="modal-content">
@@ -224,42 +207,38 @@
     const rows = document.querySelectorAll(".circle-container .gallery-row");
     const total = rows.length;
     const angle = 360 / total;
-    const radius = 520; // distance from center
+    const radius = 500;
 
-    // Position rows around a circle
     rows.forEach((row, i) => {
       const rotation = angle * i;
       row.style.transform = `rotateX(${rotation}deg) translateZ(${radius}px)`;
     });
 
     let currentIndex = 0;
-
     function rotateWheel(direction) {
       currentIndex = (currentIndex + direction + total) % total;
       container.style.transform = `rotateX(${-currentIndex * angle}deg)`;
     }
 
-    // Scroll control
     let lastScroll = 0;
     document.addEventListener("wheel", (e) => {
-      if (Date.now() - lastScroll < 600) return; // throttle
-      if (e.deltaY > 0) rotateWheel(1); // scroll down
-      else rotateWheel(-1); // scroll up
+      if (Date.now() - lastScroll < 600) return;
+      if (e.deltaY > 0) rotateWheel(1);
+      else rotateWheel(-1);
       lastScroll = Date.now();
     }, { passive: true });
 
-    // Modal viewer
+    // Modal
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const closeBtn = document.querySelector(".close");
 
-    document.querySelectorAll(".art-card img").forEach(img => {
+    document.querySelectorAll(".art-card img, .latest-card img").forEach(img => {
       img.addEventListener("click", () => {
         modal.style.display = "block";
         modalImg.src = img.src;
       });
     });
-
     closeBtn.onclick = () => modal.style.display = "none";
     modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
   </script>
