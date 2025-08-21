@@ -5,38 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Virpi Annanolli | Taidegalleria</title>
 
+  <link rel="icon" type="image/x-icon" href="android-chrome-512x512.png">
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
 </head>
 <body class="fade">
   <header>
     <h1 class="logo">Virpi Annanolli</h1>
+
     <a href="https://www.instagram.com/virpiannart/?hl=en"
-      class="instagram-btn"
-      target="_blank"
-      aria-label="Instagram">
+       class="instagram-btn"
+       target="_blank"
+       aria-label="Instagram">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="2" y="2" width="20" height="20" rx="5"/>
-        <circle cx="12" cy="12" r="5"/>
-        <circle class="dot" cx="17.5" cy="6.5" r="1.5"/>
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <circle cx="12" cy="12" r="5"></circle>
+        <circle class="dot" cx="17.5" cy="6.5" r="1.5"></circle>
       </svg>
     </a>
+
     <nav>
       <a href="index.html" data-key="home">Etusivu</a>
       <a href="gallery.html" data-key="gallery">Galleria</a>
       <a href="contact.html" data-key="contact">Yhteystiedot</a>
     </nav>
+
     <button id="langToggle">EN</button>
   </header>
 
   <main>
     <h2 class="fade-in" data-key="gallery">Galleria</h2>
-
     <section class="gallery-section fade-in">
       <h3 class="gallery-title" data-key="section1">Uusimmat teokset</h3>
-      <div class="gallery-carousel" data-speed="2200">
+
+      <div class="gallery-carousel" data-speed="2200" data-direction="right">
         <div class="track">
           <div class="placeholder">
             <img src="IMG-20250819-WA0005.jpg" alt="Teos – vaaleat sävyt">
@@ -45,6 +48,7 @@
               <p>Akryyli kankaalle · 70 × 90 cm</p>
             </div>
           </div>
+
           <div class="placeholder">
             <img src="IMG-20250819-WA0006.jpg" alt="Teos – kukka-aihe">
             <div class="art-info">
@@ -52,6 +56,7 @@
               <p>Öljy kankaalle · 60 × 80 cm</p>
             </div>
           </div>
+
           <div class="placeholder">
             <img src="IMG-20250819-WA0007.jpg" alt="Teos – luonnon hehku">
             <div class="art-info">
@@ -59,6 +64,7 @@
               <p>Akryyli kankaalle · 50 × 70 cm</p>
             </div>
           </div>
+
           <div class="placeholder">
             <img src="IMG-20250819-WA0008.jpg" alt="Teos – ekspressiivinen maalaus">
             <div class="art-info">
@@ -66,17 +72,48 @@
               <p>Sekatekniikka · 80 × 100 cm</p>
             </div>
           </div>
+
+          <div class="placeholder">
+            <img src="IMG-20250819-WA0009.jpg" alt="Teos – tekstuuri">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Akryyli · 60 × 60 cm</p>
+            </div>
+          </div>
+
+          <div class="placeholder">
+            <img src="IMG-20250819-WA0010.jpg" alt="Teos – lämpimät sävyt">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Öljy · 50 × 70 cm</p>
+            </div>
+          </div>
+
+          <div class="placeholder">
+            <img src="IMG-20250819-WA0011.jpg" alt="Teos – sävyjä">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Akryyli · 40 × 60 cm</p>
+            </div>
+          </div>
+
+          <div class="placeholder">
+            <img src="IMG-20250819-WA0012.jpg" alt="Teos – pehmeä kontrasti">
+            <div class="art-info">
+              <h4>Teos</h4>
+              <p>Sekatekniikka · 70 × 100 cm</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-
     <section class="gallery-section fade-in">
       <h3 class="gallery-title">Teokset tyylin mukaan</h3>
 
       <div class="cylinder-wrapper">
         <button class="cylinder-btn left" aria-label="Edellinen">&#10094;</button>
 
-        <div class="gallery-circle">
+        <div class="gallery-circle" aria-live="polite">
           <div class="circle-container">
             <div class="gallery-row" data-label="Akryyli">
               <img src="IMG-20250817-WA0000.jpg" alt="Akryyli">
@@ -109,7 +146,6 @@
       </div>
     </section>
   </main>
-
   <div id="imageModal" class="modal" aria-hidden="true">
     <span class="close" aria-label="Sulje">&times;</span>
     <div class="modal-content" role="dialog" aria-modal="true">
