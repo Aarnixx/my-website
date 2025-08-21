@@ -9,47 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
-
-  <style>
-    .gallery-circle {
-      perspective: 1200px;
-      height: 400px;
-      overflow: hidden;
-      position: relative;
-      margin-top: 60px;
-    }
-
-    .circle-label {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .circle-container {
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.8s ease;
-    }
-    .gallery-row {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-style: preserve-3d;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      transform-origin: center center;
-    }
-
-    .gallery-row img {
-      width: 180px;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-  </style>
 </head>
 <body class="fade">
   <header>
@@ -75,7 +34,6 @@
   <main>
     <h2 class="fade-in" data-key="gallery">Galleria</h2>
 
-    <!-- Scrollable row -->
     <section class="gallery-section fade-in">
       <h3 class="gallery-title" data-key="section1">Uusimmat teokset</h3>
       <div class="gallery-carousel" data-speed="2200">
@@ -112,43 +70,46 @@
       </div>
     </section>
 
-    <!-- Cylinder galleries -->
     <section class="gallery-section fade-in">
       <h3 class="gallery-title">Teokset tyylin mukaan</h3>
 
-      <div class="circle-label">Akryyli</div>
-      <div class="gallery-circle">
-        <div class="circle-container">
-          <div class="gallery-row"><img src="IMG-20250817-WA0000.jpg" alt="Akryyli"></div>
-          <div class="gallery-row"><img src="IMG-20250817-WA0002.jpg" alt="Akryyli"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0010.jpg" alt="Akryyli"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0012.jpg" alt="Akryyli"></div>
+      <div class="cylinder-wrapper">
+        <button class="cylinder-btn left" aria-label="Edellinen">&#10094;</button>
+
+        <div class="gallery-circle">
+          <div class="circle-container">
+            <div class="gallery-row" data-label="Akryyli">
+              <img src="IMG-20250817-WA0000.jpg" alt="Akryyli">
+              <img src="IMG-20250817-WA0002.jpg" alt="Akryyli">
+              <img src="IMG-20250819-WA0010.jpg" alt="Akryyli">
+              <img src="IMG-20250819-WA0012.jpg" alt="Akryyli">
+            </div>
+
+            <div class="gallery-row" data-label="Öljy">
+              <img src="IMG-20250817-WA0001.jpg" alt="Öljy">
+              <img src="IMG-20250819-WA0013.jpg" alt="Öljy">
+              <img src="IMG-20250819-WA0014.jpg" alt="Öljy">
+              <img src="IMG-20250819-WA0016.jpg" alt="Öljy">
+            </div>
+
+            <div class="gallery-row" data-label="Sekatekniikka">
+              <img src="IMG-20250817-WA0003.jpg" alt="Sekatekniikka">
+              <img src="IMG-20250819-WA0017.jpg" alt="Sekatekniikka">
+              <img src="IMG-20250819-WA0018.jpg" alt="Sekatekniikka">
+              <img src="IMG-20250819-WA0019.jpg" alt="Sekatekniikka">
+            </div>
+          </div>
         </div>
+
+        <button class="cylinder-btn right" aria-label="Seuraava">&#10095;</button>
       </div>
 
-      <div class="circle-label">Öljy</div>
-      <div class="gallery-circle">
-        <div class="circle-container">
-          <div class="gallery-row"><img src="IMG-20250817-WA0001.jpg" alt="Öljy"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0013.jpg" alt="Öljy"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0014.jpg" alt="Öljy"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0016.jpg" alt="Öljy"></div>
-        </div>
-      </div>
-
-      <div class="circle-label">Sekatekniikka</div>
-      <div class="gallery-circle">
-        <div class="circle-container">
-          <div class="gallery-row"><img src="IMG-20250817-WA0003.jpg" alt="Sekatekniikka"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0017.jpg" alt="Sekatekniikka"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0018.jpg" alt="Sekatekniikka"></div>
-          <div class="gallery-row"><img src="IMG-20250819-WA0019.jpg" alt="Sekatekniikka"></div>
-        </div>
+      <div class="circle-label-container">
+        <span id="circleLabel">Akryyli</span>
       </div>
     </section>
   </main>
 
-  <!-- Modal -->
   <div id="imageModal" class="modal" aria-hidden="true">
     <span class="close" aria-label="Sulje">&times;</span>
     <div class="modal-content" role="dialog" aria-modal="true">
@@ -159,30 +120,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-    // Cylinder logic
-    document.querySelectorAll(".circle-container").forEach(container => {
-      const rows = container.querySelectorAll(".gallery-row");
-      const total = rows.length;
-      const angle = 360 / total;
-      const radius = 300;
-
-      rows.forEach((row, i) => {
-        row.style.transform = `rotateX(${angle * i}deg) translateZ(${radius}px)`;
-      });
-
-      let currentIndex = 0;
-      let lastScroll = 0;
-
-      container.parentElement.addEventListener("wheel", e => {
-        if (Date.now() - lastScroll < 600) return;
-        if (e.deltaY > 0) currentIndex++;
-        else currentIndex--;
-        container.style.transform = `rotateX(${-currentIndex * angle}deg)`;
-        lastScroll = Date.now();
-      });
-    });
-  </script>
 </body>
 </html>
