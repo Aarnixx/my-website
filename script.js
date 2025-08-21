@@ -263,9 +263,62 @@ function initImageModal() {
   });
 }
 
+function initCylinder() {
+  const container = document.querySelector(".circle-container");
+  if (!container) return;
+
+  const rows = container.querySelectorAll(".gallery-row");
+  const labelEl = document.getElementById("circleLabel");
+  const total = rows.length;
+  const angle = 360 / total;
+  const radius = 300;
+
+  // Arrange rows
+  rows.forEach((row, i) => {
+    row.style.transform = `rotateX(${angle * i}deg) translateZ(${radius}px)`;
+  });
+
+  let currentIndex = 0;
+
+  function updateView() {
+    container.style.transform = `rotateX(${-currentIndex * angle}deg)`;
+    const activeRow = rows[(currentIndex % total + total) % total];
+    if (labelEl) labelEl.textContent = activeRow.dataset.label || "";
+  }
+
+  // Buttons
+  const leftBtn = document.querySelector(".cylinder-btn.left");
+  const rightBtn = document.querySelector(".cylinder-btn.right");
+
+  if (leftBtn && rightBtn) {
+    leftBtn.addEventListener("click", () => {
+      currentIndex--;
+      updateView();
+    });
+
+    rightBtn.addEventListener("click", () => {
+      currentIndex++;
+      updateView();
+    });
+  }
+
+  // Scroll wheel support
+  let lastScroll = 0;
+  container.parentElement.addEventListener("wheel", e => {
+    if (Date.now() - lastScroll < 600) return;
+    if (e.deltaY > 0) currentIndex++;
+    else currentIndex--;
+    updateView();
+    lastScroll = Date.now();
+  });
+
+  updateView();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initLang();
   initPageTransitions();
   initCarousels();
   initImageModal();
+  initCylinder();
 });
