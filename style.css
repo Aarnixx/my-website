@@ -536,6 +536,7 @@ nav a:hover::after {
 @media (max-width: 600px) {
   .ig-grid { grid-template-columns: 1fr; }
 }
+/* Cylinder layout */
 .gallery-circle {
   perspective: 1200px;
   height: 80vh;
@@ -559,4 +560,57 @@ nav a:hover::after {
   justify-content: center;
   transform-origin: center center;
 }
+
+.gallery-row img {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Cylinder buttons */
+.cylinder-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cylinder-btn {
+  background: rgba(var(--secondary), 0.3);
+  border: 2px solid rgba(var(--secondary), 0.8);
+  color: var(--text);
+  font-size: 2rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.cylinder-btn:hover {
+  background: rgba(var(--secondary), 0.7);
+  transform: scale(1.15);
+}
+
+.cylinder-btn.left {
+  position: absolute;
+  left: -60px;
+}
+
+.cylinder-btn.right {
+  position: absolute;
+  right: -60px;
+}
+
+/* Label under cylinder */
+.circle-label-container {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  color: rgba(var(--secondary), 1);
+}
+
 
