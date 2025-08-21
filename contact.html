@@ -7,46 +7,49 @@
   <link rel="icon" type="image/x-icon" href="android-chrome-512x512.png">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="fade">
   <header>
     <h1 class="logo">Virpi Annanolli</h1>
+
     <a href="https://www.instagram.com/virpiannart/?hl=en"
-      class="instagram-btn"
-      target="_blank"
-      aria-label="Instagram">
+       class="instagram-btn"
+       target="_blank"
+       aria-label="Instagram">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="2" y="2" width="20" height="20" rx="5"/>
-        <circle cx="12" cy="12" r="5"/>
-        <circle class="dot" cx="17.5" cy="6.5" r="1.5"/>
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <circle cx="12" cy="12" r="5"></circle>
+        <circle class="dot" cx="17.5" cy="6.5" r="1.5"></circle>
       </svg>
     </a>
+
     <nav>
       <a href="index.html" data-key="home">Etusivu</a>
       <a href="gallery.html" data-key="gallery">Galleria</a>
       <a href="contact.html" data-key="contact">Yhteystiedot</a>
     </nav>
+
     <button id="langToggle">EN</button>
   </header>
 
   <main>
     <h2 class="fade-in" data-key="contact">Yhteystiedot</h2>
-    
-    <form class="contact-form fade-in" 
-          action="https://formspree.io/f/mgvzqwae" 
+
+    <form class="contact-form fade-in"
+          action="https://formspree.io/f/mgvzqwae"
           method="POST">
-      
+
       <label for="name" data-key="nameLabel">Nimi</label>
-      <input id="name" name="name" type="text" 
+      <input id="name" name="name" type="text"
              data-key="namePh" placeholder="Kirjoita nimesi" required>
 
       <label for="email" data-key="emailLabel">Sähköposti</label>
-      <input id="email" name="email" type="email" 
+      <input id="email" name="email" type="email"
              data-key="emailPh" placeholder="example@email.com" required>
 
       <label for="message" data-key="messageLabel">Viesti</label>
-      <textarea id="message" name="message" rows="6" 
+      <textarea id="message" name="message" rows="6"
                 data-key="messagePh" placeholder="Kirjoita viestisi tähän" required></textarea>
 
       <button type="submit" data-key="sendButton">Lähetä</button>
@@ -54,4 +57,3 @@
   </main>
 </body>
 </html>
-
