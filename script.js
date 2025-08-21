@@ -1,3 +1,4 @@
+// i18n
 const translations = {
   fi: {
     home: "Etusivu",
@@ -191,6 +192,7 @@ function initCarousels() {
   });
 }
 
+// Modal (created if missing). Also works for cylinder images.
 function ensureModal() {
   let modal = document.getElementById("imageModal");
   if (!modal) {
@@ -247,10 +249,10 @@ function initImageModal() {
   });
 
   document.addEventListener("click", (e) => {
-    const img = e.target.closest(".gallery-grid img, .gallery-carousel img");
+    const img = e.target.closest(".gallery-grid img, .gallery-carousel img, .gallery-row img");
     if (!img) return;
 
-    const wrapper = img.closest(".art-card, .placeholder");
+    const wrapper = img.closest(".art-card, .placeholder, .gallery-row");
     const title = wrapper?.querySelector(".art-info h4")?.textContent?.trim() || "Teos";
     const details = wrapper?.querySelector(".art-info p")?.textContent?.trim() || "";
     const src = img.getAttribute("src");
@@ -263,53 +265,92 @@ function initImageModal() {
   });
 }
 
+// 3D Cylinder (horizontal spin with Y axis). Buttons on both sides.
 function initCylinder() {
   const container = document.querySelector(".circle-container");
-  if (!container) return;
+  const circle = document.querySelector(".gallery-circle");
+  if (!container || !circle) return;
 
   const rows = container.querySelectorAll(".gallery-row");
   const labelEl = document.getElementById("circleLabel");
   const total = rows.length;
-  const angle = 360 / total;
-  const radius = 300;
+  if (!total) return;
 
-  // Arrange rows
+  const angle = 360 / total;
+  const radius = 360; // distance from center
+
+  // place rows around Y-axis
   rows.forEach((row, i) => {
-    row.style.transform = `rotateX(${angle * i}deg) translateZ(${radius}px)`;
+    row.style.transform = `rotateY(${angle * i}deg) translateZ(${radius}px)`;
   });
 
   let currentIndex = 0;
+  let spinning = false;
+
+  function clampIndex(i) {
+    return (i % total + total) % total;
+  }
 
   function updateView() {
-    container.style.transform = `rotateX(${-currentIndex * angle}deg)`;
-    const activeRow = rows[(currentIndex % total + total) % total];
+    spinning = true;
+    container.style.transform = `rotateY(${-currentIndex * angle}deg)`;
+    const activeRow = rows[clampIndex(currentIndex)];
     if (labelEl) labelEl.textContent = activeRow.dataset.label || "";
+    // unblock after CSS transition (~800ms)
+    setTimeout(() => { spinning = false; }, 820);
   }
 
   // Buttons
   const leftBtn = document.querySelector(".cylinder-btn.left");
   const rightBtn = document.querySelector(".cylinder-btn.right");
 
-  if (leftBtn && rightBtn) {
+  if (leftBtn) {
     leftBtn.addEventListener("click", () => {
+      if (spinning) return;
       currentIndex--;
       updateView();
     });
-
+  }
+  if (rightBtn) {
     rightBtn.addEventListener("click", () => {
+      if (spinning) return;
       currentIndex++;
       updateView();
     });
   }
 
-  // Scroll wheel support
+  // Keyboard arrows
+  document.addEventListener("keydown", (e) => {
+    if (spinning) return;
+    if (e.key === "ArrowLeft") { currentIndex--; updateView(); }
+    if (e.key === "ArrowRight") { currentIndex++; updateView(); }
+  });
+
+  // Wheel support (on the cylinder only)
   let lastScroll = 0;
-  container.parentElement.addEventListener("wheel", e => {
-    if (Date.now() - lastScroll < 600) return;
-    if (e.deltaY > 0) currentIndex++;
+  circle.addEventListener("wheel", (e) => {
+    const now = Date.now();
+    if (now - lastScroll < 500 || spinning) return;
+    if (e.deltaY > 0 || e.deltaX > 0) currentIndex++;
     else currentIndex--;
     updateView();
-    lastScroll = Date.now();
+    lastScroll = now;
+  }, { passive: true });
+
+  // Touch / drag (basic)
+  let touchStartX = null;
+  circle.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  circle.addEventListener("touchend", (e) => {
+    if (touchStartX == null) return;
+    const dx = (e.changedTouches[0].clientX - touchStartX);
+    if (Math.abs(dx) > 30) {
+      if (dx < 0) currentIndex++;
+      else currentIndex--;
+      updateView();
+    }
+    touchStartX = null;
   });
 
   updateView();
