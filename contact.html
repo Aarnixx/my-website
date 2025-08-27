@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact - Virpi Annanolli</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="images/Icon.png">
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-left" id="artist-name">Virpi Annanolli</div>
+    <div class="nav-center">
+      <button id="home-btn">Home</button>
+      <button id="contact-btn">Contact</button>
+      <button id="gallery-btn">Gallery</button>
+    </div>
+    <div class="nav-right">
+      <button id="lang-btn">FI</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="contact-section">
+      <h1>Contact</h1>
+      <form class="contact-form"
+            action="https://formspree.io/f/mgvzqwae"
+            method="POST">
+        
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="example@email.com" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write your message here" required></textarea>
+
+        <button type="submit">Send</button>
+        <p id="form-status" style="color: green; display: none;">Message sent successfully!</p>
+        <p id="form-error" style="color: red; display: none;">Something went wrong. Please try again.</p>
+      </form>
+    </section>
+  </main>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
