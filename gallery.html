@@ -5,6 +5,7 @@
   <title>Gallery - Virpi Annanolli</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="images/Icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <nav id="navbar">
@@ -15,6 +16,9 @@
       <button id="gallery-btn">Gallery</button>
     </div>
     <div class="nav-right">
+      <a id="instagram-link" href="https://www.instagram.com/yourusername" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
       <button id="lang-btn">FI</button>
     </div>
   </nav>
@@ -42,107 +46,46 @@
       <h2 id="other-works-label">Other Works</h2>
 
       <div class="category">
-        <h3 id="cat-oilCanvas">Oil on Canvas</h3>
+        <h3>Ihmiset ja tunteet</h3>
         <div class="grid">
-          <img src="images/IMG-8.jpg" alt="Oil on Canvas">
+          <img src="images/IMG-8.jpg" alt="Ihmiset ja tunteet" data-info="Extra info about image 8">
+          <img src="images/IMG-9.jpg" alt="Ihmiset ja tunteet" data-info="Extra info about image 9">
+          <img src="images/IMG-10.jpg" alt="Ihmiset ja tunteet" data-info="Extra info about image 10">
         </div>
       </div>
 
       <div class="category">
-        <h3 id="cat-charcoalPastel">Charcoal and Pastel on Paper</h3>
+        <h3>Tilat ja talot</h3>
         <div class="grid">
-          <img src="images/IMG-9.jpg" alt="Charcoal and Pastel">
-          <img src="images/IMG-10.jpg" alt="Charcoal and Pastel">
+          <img src="images/IMG-11.jpg" alt="Tilat ja talot" data-info="Extra info about image 11">
+          <img src="images/IMG-12.jpg" alt="Tilat ja talot" data-info="Extra info about image 12">
         </div>
       </div>
 
       <div class="category">
-        <h3 id="cat-acrylicWatercolor">Acrylic on Watercolor Paper</h3>
+        <h3>Luonto ja eläimet</h3>
         <div class="grid">
-          <img src="images/IMG-11.jpg" alt="Acrylic on Watercolor Paper">
-          <img src="images/IMG-12.jpg" alt="Acrylic on Watercolor Paper">
+          <img src="images/IMG-13.jpg" alt="Luonto ja eläimet" data-info="Extra info about image 13">
+          <img src="images/IMG-14.jpg" alt="Luonto ja eläimet" data-info="Extra info about image 14">
         </div>
       </div>
 
       <div class="category">
-        <h3 id="cat-watercolorInk">Watercolor and Ink on Paper</h3>
+        <h3>Kolmiulotteiset työt</h3>
         <div class="grid">
-          <img src="images/IMG-13.jpg" alt="Watercolor and Ink">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-oilPastel">Oil Pastel on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-14.jpg" alt="Oil Pastel on Paper">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-acrylicPaper">Acrylic on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-15.jpg" alt="Acrylic on Paper">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-charcoalOilPastel">Charcoal and Oil Pastel on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-16.jpg" alt="Charcoal and Oil Pastel">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-inkInktense">Ink and Inktense Pencils on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-17.jpg" alt="Ink and Inktense Pencils">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-pastelPaper">Pastel on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-18.jpg" alt="Pastel on Paper">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-charcoalChalk">Charcoal and White Chalk on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-9.jpg" alt="Charcoal and White Chalk">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-inktense">Inktense Pencils on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-10.jpg" alt="Inktense Pencils">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-charcoal">Charcoal on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-11.jpg" alt="Charcoal on Paper">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-pencil">Pencil on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-12.jpg" alt="Pencil on Paper">
-          <img src="images/IMG-13.jpg" alt="Pencil on Paper">
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 id="cat-inkPen">Ink Pen on Paper</h3>
-        <div class="grid">
-          <img src="images/IMG-14.jpg" alt="Ink Pen on Paper">
+          <img src="images/IMG-15.jpg" alt="Kolmiulotteiset työt" data-info="Extra info about image 15">
+          <img src="images/IMG-16.jpg" alt="Kolmiulotteiset työt" data-info="Extra info about image 16">
+          <img src="images/IMG-17.jpg" alt="Kolmiulotteiset työt" data-info="Extra info about image 17">
+          <img src="images/IMG-18.jpg" alt="Kolmiulotteiset työt" data-info="Extra info about image 18">
         </div>
       </div>
     </section>
   </main>
+
+  <div id="img-panel" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000; flex-direction:column;">
+    <img id="panel-img" src="" style="max-width:90%; max-height:70%; box-shadow:0 0 20px white;">
+    <p id="panel-info" style="color:white; margin-top:10px; text-align:center; max-width:80%;"></p>
+  </div>
 
   <script src="scripts.js"></script>
 </body>
