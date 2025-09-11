@@ -167,7 +167,6 @@ main {
   to { transform: rotateY(-360deg); }
 }
 
-/* ---------- TABLETS ---------- */
 @media (max-width: 1000px) {
   :root {
     --panel-width: 360px;
@@ -186,7 +185,6 @@ main {
   }
 }
 
-/* ---------- LARGE PHONES ---------- */
 @media (max-width: 768px) {
   :root {
     --panel-width: 300px;
@@ -215,7 +213,6 @@ main {
   }
 }
 
-/* ---------- SMALL PHONES ---------- */
 @media (max-width: 480px) {
   :root {
     --panel-width: 240px;
@@ -236,7 +233,6 @@ main {
   }
 }
 
-/* ---------- GRID GALLERY ---------- */
 .category {
   margin: 2rem 0;
   text-align: center;
@@ -359,4 +355,65 @@ main {
 .contact-form button:hover {
   background-color: rgba(var(--green-strong));
   transform: scale(1.03);
+}
+
+@media (max-width: 1000px) {
+  .nav-center {
+    gap: 1rem;
+  }
+
+  .nav-center button,
+  .nav-right button,
+  #instagram-link {
+    font-size: 1.1rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  #instagram-link i {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .nav-center {
+    position: relative;
+    transform: none;
+    left: auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+
+  .nav-center button,
+  .nav-right button,
+  #instagram-link {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+
+  #instagram-link i {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 1.2rem;
+  }
+
+  .nav-center button,
+  .nav-right button,
+  #instagram-link {
+    font-size: 1.3rem;
+    padding: 0.75rem 1.2rem;
+  }
+
+  #instagram-link i {
+    font-size: 30px;
+  }
 }
